@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+	"http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+	
+	<constant name="struts.action.extension" value="action,do,"></constant>
+    <constant name="struts.enable.DynamicMethodInvocation" value="true" />
+    <constant name="struts.devMode" value="true" />
+    
+    <package name="test" namespace="/" extends="struts-default">
+
+		<default-action-ref name="index"/>
+	<action name="login">
+		<result>/WEB-INF/pages/login.jsp</result>
+	</action>
+    <action name="admin-login" class="top.csy.Administrator" method="verify" >
+    	<result name="success">/WEB-INF/pages/query.jsp</result>
+    	<result name="fail">/WEB-INF/pages/failed-login.jsp</result>
+    </action>
+    <action name="return">
+    	<result>/WEB-INF/pages/login.jsp</result>
+    </action>
+	<action name="insert">
+		<result>/WEB-INF/pages/insert.jsp</result>
+	</action>
+	<action name="insertIn">
+		<result>/WEB-INF/pages/query.jsp</result>
+	</action>
+    </package>
+
+    <include file="example.xml"/>
+
+    <!-- Add packages here -->
+
+</struts>
